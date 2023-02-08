@@ -23,7 +23,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
+        SignIn.routeName: (context) => MultiBlocProvider(
+          providers: [
+              BlocProvider<AuthCubit>.value(
+                  value: sl<AuthCubit>(),
+                  child: SignIn(),
+              ),
+          ],
+          child: const SignIn(),
+        ),
+        SignUp.routeName: (context) => MultiBlocProvider(
+          providers: [
+              BlocProvider<AuthCubit>.value(
+                  value: sl<AuthCubit>(),
+                  child: SignUp(),
+              ),
+          ],
+          child: const SignUp(),
+        ),
         FinanceData.routeName: (context) => const FinanceData(),
+        /*FinanceData.routeName: (context) => const FinanceData(),
         SignUp.routeName: (_) => BlocProvider(
               create: (context) => sl<AuthCubit>(),
               child: SignUp(),
@@ -31,7 +50,7 @@ class MyApp extends StatelessWidget {
         SignIn.routeName: (_) => BlocProvider(
               create: (context) => sl<AuthCubit>(),
               child: SignIn(),
-            ),
+            ),*/
       },
     initialRoute: SignIn.routeName,
     );

@@ -28,6 +28,20 @@ class AuthCubit extends Cubit<AuthState> {
       emit(ErrorState(e.response!.data['message']));
     }
   }
+
+  Future<void> singIn(User user)async{
+    try{
+      var result = await dio.post(AppEnv.auth,data: user);
+
+      var data = User.fromJson(result.data['data']);
+      if(result.statusCode == 200){
+        if(data.token == null){
+          throw DioError(requestOptions: RequestOptions(path: ''),error: 'Токен равен нулю');
+        }
+        emit(SuccesState());
+      }
+    } on DioError catch(e){
+      emit(ErrorState(e.response!.data['message']));
+    }
+  }
 }
-
-
