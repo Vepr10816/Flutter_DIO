@@ -9,10 +9,13 @@ class User with _$User{
   const factory User(
   {
     required String userName,
-    required String email,
-    required String password
+    String? email,
+    required String password,
+    @JsonKey(name:'refreshToken')
+    String? token,
   }
   ) = _User;
 
   factory User.fromJson(Map<String,dynamic> json) => _$UserFromJson(json);
 }
+//flutter pub run build_runner build
