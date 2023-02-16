@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dio/data/entity/user/user.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_in.dart';
 import 'package:flutter_dio/presentation/widgets/custom_button.dart';
 import 'package:flutter_dio/presentation/widgets/text_field_obscure.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dio/state/cubit/auth_cubit.dart';
+import 'package:flutter_dio/state/cubit/auth/auth_cubit.dart';
 
-import '../../../user.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);

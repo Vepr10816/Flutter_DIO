@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dio/data/entity/user/user.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_up.dart';
 import 'package:flutter_dio/presentation/screen/main/main_screen.dart';
 import 'package:flutter_dio/presentation/widgets/custom_button.dart';
 import 'package:flutter_dio/presentation/widgets/text_field_obscure.dart';
+import 'package:flutter_dio/state/cubit/auth/auth_cubit.dart';
+import 'package:flutter_dio/state/cubit/financeList/finance_list_cubit.dart';
+import 'package:flutter_dio/state/cubit/profile/profile_cubit.dart';
 
-import '../../../state/cubit/auth_cubit.dart';
-import '../../../state/cubit/list_cubit.dart';
-import '../../../state/cubit/profile_cubit.dart';
-import '../../../user.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -141,7 +141,7 @@ class _SignInState extends State<SignIn> {
     context.read<AuthCubit>().singIn(User(
       userName: _loginController.text,
       password: _passwordController.text
-    )).then((value) => context.read<ListCubit>().MyFinance()).then((value) => context.read<ProfileCubit>().GetUser());
+    )).then((value) => context.read<FinanceListCubit>().getFinanceList()).then((value) => context.read<ProfileCubit>().getUser());
     //context.read<ListCubit>().MyFinance();
     //context.read<ProfileCubit>().GetUser();
   }

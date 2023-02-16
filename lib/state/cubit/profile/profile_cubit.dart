@@ -1,18 +1,18 @@
-import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter_dio/presentation/screen/financedata/finance_data.dart';
 
-import '../../common/app_env.dart';
-import '../../financedata.dart';
-import '../../user.dart';
-import 'Profile_state.dart';
+
+import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dio/common/app_env.dart';
+import 'package:flutter_dio/data/entity/user/user.dart';
+
+import 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this.dio) : super(ProfileState(userName: '', email: ''));
  
   final Dio dio;
 
-   Future<void> GetUser()async{
+   Future<void> getUser()async{
       try{
         var result = await dio.get(AppEnv.userData);
         var data = User.fromJson(result.data);
@@ -23,12 +23,9 @@ class ProfileCubit extends Cubit<ProfileState> {
       }
     }
 
-    Future<void> updateUserData(User user)async{
+    Future<void> updateUser(User user)async{
     try{
       var result = await dio.post(AppEnv.userData,data: user);
-      
-      //var data = Financedata.fromJson(result.data);
-
       if(result.statusCode == 200){
         print('Изменил данные пользователя');
         var result = await dio.get(AppEnv.userData);
@@ -45,9 +42,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     Future<void> updateUserPassword(String oldPassword, String newPassword)async{
     try{
       var result = await dio.put(AppEnv.userData+'?newPassword='+newPassword+'&oldPassword='+oldPassword);
-      
-      //var data = Financedata.fromJson(result.data);
-
       if(result.statusCode == 200){
         print('Изменил данные пользователя');
       }

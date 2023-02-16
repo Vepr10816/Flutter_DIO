@@ -1,20 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dio/presentation/screen/financedata/finance_data.dart';
+import 'package:flutter_dio/common/app_env.dart';
+import 'package:flutter_dio/data/entity/financedata/financedata.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../common/app_env.dart';
-import '../../financedata.dart';
-import '../../user.dart';
-import 'list_state.dart';
 
-class ListCubit extends Cubit<ListState> {
-  ListCubit(this.dio)
-      : super(ListState(operationNameList: [], idFinanceList: []));
+
+part 'finance_state.dart';
+
+/*class FinanceCubit extends Cubit<FinanceState> {
+  FinanceCubit(this.dio) : super(InitialState()) ;
 
   final Dio dio;
-
+  
   Future<void> Delete(int index) async {
-    List operations = state.operationNameList;
+    FinanceListState fl = FinanceListState();
+    List operations = ;
     List idOperations = state.idFinanceList;
     try {
       var result = await dio
@@ -69,4 +72,7 @@ class ListCubit extends Cubit<ListState> {
     List idOperations = state.idFinanceList;
     return idOperations[index];
   }
-}
+  
+
+  
+}*/

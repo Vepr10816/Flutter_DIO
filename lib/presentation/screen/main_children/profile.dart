@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dio/data/entity/user/user.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_in.dart';
 import 'package:flutter_dio/presentation/widgets/custom_button.dart';
 import 'package:flutter_dio/presentation/widgets/text_field_obscure.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dio/state/cubit/auth_cubit.dart';
-import 'package:flutter_dio/state/cubit/profile_cubit.dart';
+import 'package:flutter_dio/state/cubit/profile/profile_cubit.dart';
+import 'package:flutter_dio/state/cubit/profile/profile_state.dart';
 
-import '../../../state/cubit/Profile_state.dart';
-import '../../../user.dart';
+
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -35,6 +35,7 @@ class _ProfileState extends State<Profile> {
   void dispose() {
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -163,28 +164,6 @@ class _ProfileState extends State<Profile> {
                     ),*/
 
                     const Spacer(flex: 3),
-                   /* DropdownButton<String>(
-                      items: <String>['A', 'B', 'C', 'D'].map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (_) {},
-                    )*/
-
-                    /*Align(
-                      alignment: Alignment.bottomLeft,
-                      child: ElevatedButton(
-                        onPressed: () => Navigator.pop(context),
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          padding: const EdgeInsets.all(15),
-                        ),
-                        child:
-                            const Icon(Icons.arrow_back, color: Colors.white),
-                      ),
-                    ),*/
                   ],
                 );
               }
@@ -196,7 +175,7 @@ class _ProfileState extends State<Profile> {
   }
 
   void updUser() async {
-    context.read<ProfileCubit>().updateUserData(User(
+    context.read<ProfileCubit>().updateUser(User(
       userName: _loginController.text,
       email: _emailController.text,
       password: _passwordController.text

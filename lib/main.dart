@@ -4,15 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_in.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_up.dart';
 import 'package:flutter_dio/presentation/screen/main/main_screen.dart';
-import 'package:flutter_dio/state/cubit/auth_cubit.dart';
-import 'package:flutter_dio/state/cubit/financeparametrs_cubit.dart';
-import 'package:flutter_dio/state/cubit/list_cubit.dart';
-import 'package:flutter_dio/state/cubit/profile_cubit.dart';
-import 'package:flutter_dio/user.dart';
 import 'package:get_it/get_it.dart';
-import 'package:flutter_dio/financedata.dart';
 
 import 'locator_service.dart';
+import 'state/cubit/auth/auth_cubit.dart';
+import 'state/cubit/financeList/finance_list_cubit.dart';
+import 'state/cubit/financeParametrs/finance_parametrs_cubit.dart';
+import 'state/cubit/profile/profile_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +31,8 @@ class MyApp extends StatelessWidget {
               BlocProvider<AuthCubit>.value(
                   value: sl<AuthCubit>()
               ),
-              BlocProvider<ListCubit>.value(
-                  value: sl<ListCubit>()
+              BlocProvider<FinanceListCubit>.value(
+                  value: sl<FinanceListCubit>()
               ),
               BlocProvider<ProfileCubit>.value(
                   value: sl<ProfileCubit>()
@@ -53,8 +51,8 @@ class MyApp extends StatelessWidget {
         ),
         MainScreen.routeName: (context) => MultiBlocProvider(
           providers: [
-              BlocProvider<ListCubit>.value(
-                  value: sl<ListCubit>()
+              BlocProvider<FinanceListCubit>.value(
+                  value: sl<FinanceListCubit>()
               ),
               BlocProvider<FinanceParametrsCubit>.value(
                   value: sl<FinanceParametrsCubit>()

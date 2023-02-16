@@ -7,4 +7,5 @@ abstract class AppEnv{
   static const String financeUPDorDEL = '/finance/';
   static const String logicalDelete='/finance/logical';
   static const String userData='/user';
+  static const String category='/category';
 }

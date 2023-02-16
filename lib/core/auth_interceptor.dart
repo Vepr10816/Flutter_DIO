@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dio/shared_preferences_util.dart';
-import 'package:flutter_dio/state/cubit/auth_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../locator_service.dart';

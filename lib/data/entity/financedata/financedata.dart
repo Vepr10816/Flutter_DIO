@@ -1,4 +1,3 @@
-import 'package:flutter_dio/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 
