@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_in.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_up.dart';
-import 'package:flutter_dio/presentation/screen/main/finance_data.dart';
+import 'package:flutter_dio/presentation/screen/main/main_screen.dart';
 import 'package:flutter_dio/state/cubit/auth_cubit.dart';
+import 'package:flutter_dio/state/cubit/financeparametrs_cubit.dart';
+import 'package:flutter_dio/state/cubit/list_cubit.dart';
+import 'package:flutter_dio/state/cubit/profile_cubit.dart';
 import 'package:flutter_dio/user.dart';
+import 'package:get_it/get_it.dart';
+import 'package:flutter_dio/financedata.dart';
 
 import 'locator_service.dart';
 
@@ -26,8 +31,13 @@ class MyApp extends StatelessWidget {
         SignIn.routeName: (context) => MultiBlocProvider(
           providers: [
               BlocProvider<AuthCubit>.value(
-                  value: sl<AuthCubit>(),
-                  child: SignIn(),
+                  value: sl<AuthCubit>()
+              ),
+              BlocProvider<ListCubit>.value(
+                  value: sl<ListCubit>()
+              ),
+              BlocProvider<ProfileCubit>.value(
+                  value: sl<ProfileCubit>()
               ),
           ],
           child: const SignIn(),
@@ -41,7 +51,21 @@ class MyApp extends StatelessWidget {
           ],
           child: const SignUp(),
         ),
-        FinanceData.routeName: (context) => const FinanceData(),
+        MainScreen.routeName: (context) => MultiBlocProvider(
+          providers: [
+              BlocProvider<ListCubit>.value(
+                  value: sl<ListCubit>()
+              ),
+              BlocProvider<FinanceParametrsCubit>.value(
+                  value: sl<FinanceParametrsCubit>()
+              ),
+              BlocProvider<ProfileCubit>.value(
+                  value: sl<ProfileCubit>()
+              ),
+          ],
+          child: const MainScreen(),
+        ),
+
         /*FinanceData.routeName: (context) => const FinanceData(),
         SignUp.routeName: (_) => BlocProvider(
               create: (context) => sl<AuthCubit>(),

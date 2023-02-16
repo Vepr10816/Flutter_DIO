@@ -25,6 +25,8 @@ mixin _$User {
   String get password => throw _privateConstructorUsedError;
   @JsonKey(name: 'refreshToken')
   String? get token => throw _privateConstructorUsedError;
+  @JsonKey(name: 'accessToken')
+  String? get accessToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,8 @@ abstract class $UserCopyWith<$Res> {
       {String userName,
       String? email,
       String password,
-      @JsonKey(name: 'refreshToken') String? token});
+      @JsonKey(name: 'refreshToken') String? token,
+      @JsonKey(name: 'accessToken') String? accessToken});
 }
 
 /// @nodoc
@@ -60,6 +63,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? email = freezed,
     Object? password = null,
     Object? token = freezed,
+    Object? accessToken = freezed,
   }) {
     return _then(_value.copyWith(
       userName: null == userName
@@ -78,6 +82,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -92,7 +100,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {String userName,
       String? email,
       String password,
-      @JsonKey(name: 'refreshToken') String? token});
+      @JsonKey(name: 'refreshToken') String? token,
+      @JsonKey(name: 'accessToken') String? accessToken});
 }
 
 /// @nodoc
@@ -108,6 +117,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? email = freezed,
     Object? password = null,
     Object? token = freezed,
+    Object? accessToken = freezed,
   }) {
     return _then(_$_User(
       userName: null == userName
@@ -126,6 +136,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -137,7 +151,8 @@ class _$_User implements _User {
       {required this.userName,
       this.email,
       required this.password,
-      @JsonKey(name: 'refreshToken') this.token});
+      @JsonKey(name: 'refreshToken') this.token,
+      @JsonKey(name: 'accessToken') this.accessToken});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -150,10 +165,13 @@ class _$_User implements _User {
   @override
   @JsonKey(name: 'refreshToken')
   final String? token;
+  @override
+  @JsonKey(name: 'accessToken')
+  final String? accessToken;
 
   @override
   String toString() {
-    return 'User(userName: $userName, email: $email, password: $password, token: $token)';
+    return 'User(userName: $userName, email: $email, password: $password, token: $token, accessToken: $accessToken)';
   }
 
   @override
@@ -166,13 +184,15 @@ class _$_User implements _User {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userName, email, password, token);
+      Object.hash(runtimeType, userName, email, password, token, accessToken);
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +213,8 @@ abstract class _User implements User {
       {required final String userName,
       final String? email,
       required final String password,
-      @JsonKey(name: 'refreshToken') final String? token}) = _$_User;
+      @JsonKey(name: 'refreshToken') final String? token,
+      @JsonKey(name: 'accessToken') final String? accessToken}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -206,6 +227,9 @@ abstract class _User implements User {
   @override
   @JsonKey(name: 'refreshToken')
   String? get token;
+  @override
+  @JsonKey(name: 'accessToken')
+  String? get accessToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

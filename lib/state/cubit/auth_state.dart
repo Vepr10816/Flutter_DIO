@@ -12,4 +12,8 @@ class ErrorState extends AuthState{
   ErrorState(this.message);
 }
 
-class SuccesState extends AuthState{}
+class SuccesState extends AuthState{
+  final String token;
+
+  SuccesState(this.token);
+}

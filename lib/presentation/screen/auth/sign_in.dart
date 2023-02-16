@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dio/presentation/screen/auth/sign_up.dart';
-import 'package:flutter_dio/presentation/screen/main/finance_data.dart';
+import 'package:flutter_dio/presentation/screen/main/main_screen.dart';
 import 'package:flutter_dio/presentation/widgets/custom_button.dart';
 import 'package:flutter_dio/presentation/widgets/text_field_obscure.dart';
 
 import '../../../state/cubit/auth_cubit.dart';
+import '../../../state/cubit/list_cubit.dart';
+import '../../../state/cubit/profile_cubit.dart';
 import '../../../user.dart';
 
 class SignIn extends StatefulWidget {
@@ -43,7 +45,7 @@ class _SignInState extends State<SignIn> {
                 if(state is SuccesState){
     //context.read<AuthCubit>().close();
 
-                  Navigator.pushNamedAndRemoveUntil(context, FinanceData.routeName, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, MainScreen.routeName, (route) => false);
                 }
               },
               builder: (context, state) {
@@ -139,6 +141,8 @@ class _SignInState extends State<SignIn> {
     context.read<AuthCubit>().singIn(User(
       userName: _loginController.text,
       password: _passwordController.text
-    ));
+    )).then((value) => context.read<ListCubit>().MyFinance()).then((value) => context.read<ProfileCubit>().GetUser());
+    //context.read<ListCubit>().MyFinance();
+    //context.read<ProfileCubit>().GetUser();
   }
 }

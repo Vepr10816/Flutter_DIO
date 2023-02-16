@@ -4,4 +4,7 @@ abstract class AppEnv{
   static const String auth = '/token';
   static const String user = '/user';
   static const String finance = '/finance';
+  static const String financeUPDorDEL = '/finance/';
+  static const String logicalDelete='/finance/logical';
+  static const String userData='/user';
 }

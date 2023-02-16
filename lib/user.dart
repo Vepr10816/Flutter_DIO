@@ -13,6 +13,8 @@ class User with _$User{
     required String password,
     @JsonKey(name:'refreshToken')
     String? token,
+    @JsonKey(name:'accessToken')
+    String? accessToken,
   }
   ) = _User;
 
