@@ -1,16 +1,22 @@
-# flutter_dio
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ПРАКТИЧЕСКАЯ РАБОТА №7
+Создание приложения с использованием API.
+Цель работы: создать приложение, взаимодействующее с api при помощи dio, реализовать crud данных.
+ 
+Рисунок 61 - Иерархия проекта
+В папке common реализован класс App_Env, в котором хранятся ссылке для взаимодействия с api.
+В папке core реализован интерцептор, который перехватывает все запросы к api и производит проверку refresh token.
+ 
+Рисунок 62 – Интерцептор
+В папке model находятся модели, после написания которых надо сгенерировать при помощи freezed (команда закоментирована).
+ 
+Рисунок 63 - Модель пользователя
+В папках presentation и state находятся экраны и кубиты.
+В lib папке реализован локатор, отвечающий за регистрацию составляющий проекта в singleton.
+ 
+Рисунок 64 – Локатор
+Результат работы:
+ 
+Рисунок 65 - Добавление и редактирование
+ 
+Рисунок 66 - Главный экран
+Вывод: удалось создать приложение взаимодействующее с разработанным api.
